@@ -1,0 +1,18 @@
+function filterByPropRegex(arr, prop, pattern) {
+  const regex = new RegExp(pattern);
+  return arr.filter(function(object) {
+    return regex.test(object[prop]);
+  });
+}
+
+// test the function
+const objects = [
+  { name: 'John', age: 25, city: 'New York' },
+  { name: 'Jane', age: 32, city: 'London' },
+  { name: 'Jim', age: 28, city: 'Paris' },
+  { name: 'Jake', age: 25, city: 'New York' }
+];
+
+const filtered = filterByPropRegex(objects, 'city', '^New');
+console.log(filtered);
+// outputs [{ name: 'John', age: 25, city: 'New York' }, { name: 'Jake', age: 25, city: 'New York' }]
